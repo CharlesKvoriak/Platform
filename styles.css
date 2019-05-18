@@ -1,0 +1,29 @@
+#thing{
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:50px;
+    height:50px;
+    background-color:red;
+}
+
+#jump{
+    position:relative;
+    left:60px;
+    top:520px;
+}
+
+#canvas{
+    position:absolute;
+    width:750px;
+    height:500px;
+    left:0px;
+    top:0px;
+    background-color:grey;
+    border:dotted black;   
+}
+
+.rect{
+    background-color:black;
+    position:absolute;
+}
