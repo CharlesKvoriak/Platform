@@ -27,3 +27,8 @@
     background-color:black;
     position:absolute;
 }
+
+p{
+    position:absolute;
+    top:500px;    
+}
