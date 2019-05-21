@@ -3,7 +3,9 @@ var xmomentum=0;
 var grounded=[false, 0];
 var currentRect=0;
 var touchedBottom;
+var lastframegrounded, couldwin;
 setInterval(mainLoop, 33);
+var timer=0;
 var rects = [[0, 400, 300, 20],[300, 70, 200, 20], [500, 200, 250, 20], [90, 300, 300, 20]];       //([0],[1])= bottom left corner, [2] =  width, [3] = height
 
 for(var i=0; i<rects.length; i++){
@@ -24,6 +26,32 @@ function drawrects(){
 function mainLoop(){
     //console.log(grounded);
     sety(getcoord("#thing") + momentum);
+    
+    if(grounded[0] && grounded[1]===1){
+        couldwin=true;
+        console.log("mortt");
+    }
+    
+    else if(!lastframegrounded&&(grounded[0]&&grounded[1]===0)){
+        
+    }
+    
+    else if(grounded[0]&&grounded[1]===0){
+        timer=timer;
+        lastframegrounded=true;
+    }
+    
+    else if(lastframegrounded){
+        timer=1;
+        lastframegrounded=false;
+    }
+    
+    else{
+        //console.log(grounded);
+        timer+=1;
+    }
+    
+    $("#timer").text(timer);
     
     if(grounded[0] &&(getcoordx("#thing")<rects[currentRect][0]-50 || getcoordx("#thing")>rects[currentRect][0]+rects[currentRect][2])){
         grounded=[false,0];
