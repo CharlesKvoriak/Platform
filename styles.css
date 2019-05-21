@@ -19,16 +19,22 @@
     height:500px;
     left:0px;
     top:0px;
-    background-color:grey;
+    /*background-color:grey;*/
+    Background-image:url('https://media0.giphy.com/media/TxVVB6PfWMjE4/giphy.gif');
     border:dotted black;   
 }
 
 .rect{
-    background-color:black;
+    background-color:grey;
+    opacity:0.6;
     position:absolute;
 }
 
 p{
     position:absolute;
     top:500px;    
+}
+
+#timer{
+    color:white;
 }
