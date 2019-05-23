@@ -37,4 +37,13 @@ p{
 
 #timer{
     color:white;
+    opacity:0;
+}
+
+#goodTime{
+    opacity:0;
+    color:yellow;
+    position:absolute;
+    top:0px;
+    left:700px;
 }
