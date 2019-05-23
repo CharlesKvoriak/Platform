@@ -4,6 +4,7 @@ var grounded=[false, 0];
 var currentRect=0;
 var touchedBottom;
 var lastframegrounded, couldwin;
+var besttime=9999999;
 setInterval(mainLoop, 33);
 var timer=0;
 var rects = [[0, 400, 300, 20],[300, 70, 200, 20], [500, 200, 250, 20], [90, 300, 300, 20]];       //([0],[1])= bottom left corner, [2] =  width, [3] = height
@@ -26,32 +27,6 @@ function drawrects(){
 function mainLoop(){
     //console.log(grounded);
     sety(getcoord("#thing") + momentum);
-    
-    if(grounded[0] && grounded[1]===1){
-        couldwin=true;
-        console.log("mortt");
-    }
-    
-    else if(!lastframegrounded&&(grounded[0]&&grounded[1]===0)){
-        
-    }
-    
-    else if(grounded[0]&&grounded[1]===0){
-        timer=timer;
-        lastframegrounded=true;
-    }
-    
-    else if(lastframegrounded){
-        timer=1;
-        lastframegrounded=false;
-    }
-    
-    else{
-        //console.log(grounded);
-        timer+=1;
-    }
-    
-    $("#timer").text(timer);
     
     if(grounded[0] &&(getcoordx("#thing")<rects[currentRect][0]-50 || getcoordx("#thing")>rects[currentRect][0]+rects[currentRect][2])){
         grounded=[false,0];
@@ -83,7 +58,15 @@ function mainLoop(){
             }
             
             if(currentRect===0 && touchedBottom){
-                console.log("yey");
+                if(timer<besttime){
+                    besttime=timer;
+                    $("#goodTime").text(besttime);
+                    
+                }
+            }
+            
+            else if(currentRect===0){
+                timer=0;
             }
             
             if(momentum>0){
@@ -97,6 +80,32 @@ function mainLoop(){
             
             momentum=0;
         }
+        
+        if(grounded[0] && grounded[1]===1){
+        couldwin=true;
+        console.log("mortt");
+    }
+    
+    else if(!lastframegrounded&&(grounded[0]&&grounded[1]===0)){
+        timer=0;
+    }
+    
+    else if(grounded[0]&&grounded[1]===0){
+        timer=0;
+        lastframegrounded=true;
+    }
+    
+    else if(lastframegrounded){
+        timer=1;
+        lastframegrounded=false;
+    }
+    
+    else{
+        //console.log(grounded);
+        timer+=1;
+    }
+    
+    $("#timer").text(timer);
     });
     // console.log("momentum: " + momentum);
     // console.log("getcoord(thing)" + getcoord("#thing"));
